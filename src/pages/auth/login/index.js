@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 import { createClient } from '@supabase/supabase-js'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -15,7 +15,7 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 function Form() {
   const [formData, setFormData] = useState({});
   const [Invalid, setInvalid] = useState(null)
-
+  const router = useRouter()
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -39,6 +39,7 @@ function Form() {
         const res = await data;
         if (data.user.id){
           setInvalid(false)
+          router.back()
           //redirect
       }
       else{
@@ -50,6 +51,7 @@ function Form() {
         setInvalid(true)
     }
   }
+
 
 
   return (
@@ -69,7 +71,7 @@ function Form() {
           <input type="password" name="password" onChange={handleChange} className={"w-[100%] text-xl p-5 border-l-[1px] border-white bg-white/5"} />
         </div>
         <div className="py-4">
-        <button type="submit" className='text-center w-[100%] py-4 bg-white text-black font-semibold'>Login</button></div>
+        <button type="submit" className='text-center w-[100%] py-4 bg-white text-black font-semibold' >Login</button></div>
       </form>
       <div className={"flex justify-between px-3 text-sm opacity-70"}>
           <div className={"w-[25%] text-center"}>

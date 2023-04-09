@@ -17,15 +17,15 @@ export default function index() {
 
   const data = {
     data:{
-    topic  : "Forces And Motion",
-    subtopic_summary : "A-Level Elastic/Inelastic Collisions",
-    course_summary : "OCR A-Level Physics",
-    course : "Physics", 
-    subtopic : "Elastic/Inelastic Collisions",
-    syllabus : "OCR",
-    lengthOf : 40,
-    difficulty : "easy",
-    study_level: "A-Level"
+    topic  : "Astrophysics",//
+    subtopic_summary : "A-Level Binary Systems",//
+    course_summary : "OCR A-Level Physics",//
+    course : "Physics", //
+    subtopic : "Binary Systems",//
+    syllabus : "OCR",//
+    lengthOf : 10,//
+    difficulty : "easy",//
+    study_level: "A-Level"//
   }}
 
 
@@ -51,11 +51,11 @@ export default function index() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        router.push(('assessment/'+data.assessment))
+        router.push(('assessment/'+data.assesment))
       })
       .catch((error) => {
         console.error("Error:", error);
-        router.push(('assessment/'+data.assessment))
+        router.push(('assessment/'+data.assesment))
       });
   }
 }
@@ -65,10 +65,6 @@ export default function index() {
         postData()
         setLoading(false)
       }, 1000)
-
-      
-
-
 
         return (
         <div className=" absolute left-[50%] top-[50%] ">
