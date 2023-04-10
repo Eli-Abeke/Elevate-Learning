@@ -1,12 +1,16 @@
 import React from 'react'
 import { useState } from 'react';
-
+import { useRouter } from 'next/router'
 
 
 
 export default function index() {
 
         const [formData, setFormData] = useState({});
+
+        const router = useRouter();
+        const parameters = router.query;
+
       
         const handleChange = (event) => {
           setFormData({
@@ -17,6 +21,7 @@ export default function index() {
         }
     
     async function postData() {
+
         if (typeof window !== 'undefined') {
           var apikey = localStorage.getItem("sb-vkggcpskdomclusmolfm-auth-token");
           apikey = JSON.parse(apikey)
@@ -45,7 +50,17 @@ export default function index() {
 
 
 
+    if (parameters){
+      return (
 
+        <div>
+          <p>
+            {JSON.stringify(parameters)}
+          </p>
+        </div>
+      )
+    }
+    else{
   return (
     <div>
         <form onSubmit={postData} className={"space-y-3 max-w-[80%] mx-auto"}>
@@ -87,4 +102,4 @@ export default function index() {
         </form>
     </div>
   )
-}
+}}
