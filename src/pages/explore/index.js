@@ -24,30 +24,36 @@ export default function index() {
     GetParent()
     if(Items){
       return (
-        <div className='m-5'>
+        <>
+          <div className='bg-Card w-full p-[7rem] leading-none'>
+            <p className='text-white/20 uppercase'></p>
+            <p className=' text-9xl uppercase font-thin'>explore</p>
+          </div>
+          <div className='m-5'>
             {Items.map((parentItem, index) =>(
-                <div>
-                  <script>{parentItem.CourseConnector.length = 12}</script>
-                  <Link href={"/explore/"+parentItem.slug}>
-                    <p>{parentItem.name}</p>
-                  </Link>
-                  <div className='flex space-x-brandgap'>
-                  {parentItem.CourseConnector.map((childItem) =>
-                  <Link href={"/explore/"+parentItem.slug+"/"+childItem.slug}>
-                  <div className='bg-CardBright p-8 w-[15rem]'>
-                    <p className='text-center'>{childItem.course}</p>
-                  </div>
-                  </Link>
-                  )}
-                  <Link href={"/explore/"+parentItem.slug}>
-                    <div className='bg-CardBright p-8 w-[15rem]'>
-                    <p className='text-center'>See More</p>
-                  </div>
-                  </Link>
-                  </div>
+              <div>
+                <script>{parentItem.CourseConnector.length = 12}</script>
+                <Link href={"/explore/"+parentItem.slug}>
+                  <p>{parentItem.name}</p>
+                </Link>
+                <div className='flex space-x-brandgap'>
+                {parentItem.CourseConnector.map((childItem) =>
+                <Link href={"/explore/"+parentItem.slug+"/"+childItem.slug}>
+                <div className='bg-CardBright p-8 w-[15rem]'>
+                  <p className='text-center'>{childItem.course}</p>
                 </div>
-            ))}
-        </div>
+                </Link>
+                )}
+                <Link href={"/explore/"+parentItem.slug}>
+                  <div className='bg-CardBright p-8 w-[15rem]'>
+                  <p className='text-center'>See More</p>
+                </div>
+                </Link>
+                </div>
+              </div>
+              ))}
+          </div>
+        </>
       )
     }
     else{

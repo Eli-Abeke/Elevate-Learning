@@ -29,17 +29,19 @@ export default function index() {
 
     if(Items){
       return (
+        <>
+        <div className='bg-Card w-full p-[7rem] leading-none'>
+          <p className='text-white/20 uppercase'></p>
+          <p className=' text-9xl uppercase font-thin'>{Items[0].topic}</p>
+        </div>
         <div className='m-5'>
             {Items.map((parentItem, index) =>(
                 <div>
                   <script>{parentItem.SubtopicConnector.length = 12}</script>
-                  <Link href={"/explore/"+level+"/"+course+"/"+parentItem.slug}>
-                    <p>{parentItem.topic}</p>
-                  </Link>
-                  <div className='grid grid-cols-5 gap-brandgap'>
+                  <div className='grid grid-cols-5 gap-brandgap grid-rows-2 h-[60vh]'>
                   {parentItem.SubtopicConnector.map((childItem) =>
                   <Link href={"/explore/"+level+"/"+course+"/"+topic+"/"+childItem.slug}>
-                    <div className='bg-CardBright p-8 w-full'>
+                    <div className='bg-CardBright p-8 h-full w-full'>
                       <p className='text-center'>{childItem.subtopic}</p>
                     </div>
                   </Link>
@@ -48,7 +50,7 @@ export default function index() {
                   </div>
                 </div>
             ))}
-        </div>
+        </div></>
       )
     }
     else{

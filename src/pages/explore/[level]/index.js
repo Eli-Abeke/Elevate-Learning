@@ -29,18 +29,21 @@ export default function index() {
     // if there are any results, map them to some basic linked text items
     if(Items){
       return (
-        <div className='m-5'>
-            <p className='text-5xl'>{Items[0].StudyLevel.name}</p>
+      <>
+        <div className='bg-Card w-full p-[7rem] leading-none'>
+          <p className='text-white/20 uppercase'></p>
+          <p className=' text-9xl uppercase font-thin'>{Items[0].StudyLevel.name}</p>
+        </div>
+        <div className='m-5 grid grid-cols-5 gap-brandgap'>
             {Items.map((parentItem, index) =>(
-                <div>
+                <div className='w-full'>
                   <Link href={"/explore/"+level+"/"+parentItem.slug}>
-                    <p>{parentItem.course}</p>
+                    <p className=' p-8 bg-CardBright h-full text-center w-full'>{parentItem.course}</p>
                   </Link>
-                  <div className='flex space-x-brandgap'>
-                  </div>
                 </div>
             ))}
         </div>
+      </>
       )
     }
     else{

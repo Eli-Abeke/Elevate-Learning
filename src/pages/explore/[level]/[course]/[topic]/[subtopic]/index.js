@@ -40,7 +40,12 @@ export default function index() {
 
     if(Items){
       return (
-        <div className='m-5'>
+        <> 
+        <div className='bg-Card w-full p-[7rem] leading-none'>
+        <p className='text-white/20 uppercase'></p>
+        <p className=' text-9xl uppercase font-thin'>{Items[0].subtopic}</p>
+      </div>
+        <div className='m-5 mx-[7.5rem] text-2xl'>
             {Items.map((parentItem, index) =>(
                 <div>
                   <script>{parentItem.Subtopic.length = 12}</script>
@@ -49,17 +54,19 @@ export default function index() {
                   </Link>
                   <div className='flex space-x-brandgap'>
                   <p>{parentItem.Subtopic.description}</p>
+
+                  </div>
+                </div>
+            ))}
                 <Link href={{
                   pathname:"/assesment/create",
                   query: parameters,
 
                 }}>
-                <p>Create some questions</p>
+                <p className='p-5'>Create some questions</p>
                 </Link>
-                  </div>
-                </div>
-            ))}
         </div>
+        </>
       )
     }
     else{

@@ -28,13 +28,15 @@ export default function index() {
 
     if(Items){
       return (
+        <>
+        <div className='bg-Card w-full p-[7rem] leading-none'>
+          <p className='text-white/20 uppercase'></p>
+          <p className=' text-9xl uppercase font-thin'>{Items[0].course}</p>
+        </div>
         <div className='m-5'>
             {Items.map((parentItem, index) =>(
                 <div>
                   <script>{parentItem.TopicConnector.length = 12}</script>
-                  <Link href={"/explore/"+level+"/"+parentItem.slug}>
-                    <p>{parentItem.course}</p>
-                  </Link>
                   <div className='flex space-x-brandgap'>
                   {parentItem.TopicConnector.map((childItem) =>
                   <Link href={"/explore/"+level+"/"+"/"+parentItem.slug+"/"+childItem.slug}>
@@ -47,7 +49,7 @@ export default function index() {
                   </div>
                 </div>
             ))}
-        </div>
+        </div></>
       )
     }
     else{
