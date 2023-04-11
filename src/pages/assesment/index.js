@@ -11,10 +11,7 @@ export default function index() {
 
   var router = Router
   
-  const supabaseUrl = 'http://localhost:54321/functions/v1/hello'
-  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU'
-
-
+  // the data to be passed into the external function
   const data = {
     data:{
     topic  : "Astrophysics",//
@@ -32,9 +29,11 @@ export default function index() {
 
     const [isLoading, setLoading] = useState(true);
   
-    // Example POST method implementation:
+    // Example POST method implementation  to trigger function
   async function postData() {
     if (typeof window !== 'undefined') {
+      //get the user cookie to allow the function to act as that user, reauthenticate them, gain their authentication
+      //role, and connect assesment to them for them to access etc.
       var apikey = localStorage.getItem("sb-vkggcpskdomclusmolfm-auth-token");
       apikey = JSON.parse(apikey)
       fetch(supabaseUrl, {
