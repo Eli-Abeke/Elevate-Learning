@@ -10,7 +10,8 @@ import { createClient } from '@supabase/supabase-js'
 import History from '@/components/widgets/history'
 import Welcome from '@/components/widgets/welcome'
 import Suggestions from '@/components/widgets/suggestions'
-const supabaseUrl = 'https://vkggcpskdomclusmolfm.supabase.co'
+
+const supabaseUrl = process.env.SUPABASE_URL
 const supabaseKey = process.env.SUPABASE_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
 

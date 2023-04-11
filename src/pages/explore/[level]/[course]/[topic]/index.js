@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link';
 
 export default function index() {
-    const supabaseUrl = 'https://vkggcpskdomclusmolfm.supabase.co'
+    const supabaseUrl = process.env.SUPABASE_URL
     const supabaseKey = process.env.SUPABASE_KEY
     const supabase = createClient(supabaseUrl, supabaseKey)
 
@@ -39,7 +39,7 @@ export default function index() {
                   <div className='grid grid-cols-5 gap-brandgap'>
                   {parentItem.SubtopicConnector.map((childItem) =>
                   <Link href={"/explore/"+level+"/"+course+"/"+topic+"/"+childItem.slug}>
-                    <div className='bg-CardBright p-8 w-[15rem]'>
+                    <div className='bg-CardBright p-8 w-full'>
                       <p className='text-center'>{childItem.subtopic}</p>
                     </div>
                   </Link>

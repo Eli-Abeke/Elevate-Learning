@@ -1,19 +1,21 @@
 import React from 'react'
 import { createClient } from '@supabase/supabase-js'
+import { useRouter } from 'next/router'
 
 export default function index() {
 
-    const supabaseUrl = 'https://vkggcpskdomclusmolfm.supabase.co'
-const supabaseKey = process.env.SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
+  const supabaseUrl = process.env.SUPABASE_URL
+  const supabaseKey = process.env.SUPABASE_KEY
+  const supabase = createClient(supabaseUrl, supabaseKey)
 
-    async function handleLogout() {
-          let { error } = await supabase.auth.signOut()
-      }
+  let router = useRouter()
 
 
-      handleLogout()
-  return (
-    <div>index</div>
-  )
+  //log user out using their session cookie for identification
+  async function handleLogout() {
+    let { error } = await supabase.auth.signOut()
+    router.push("/auth/login")
+  }
+
+  handleLogout()
 }

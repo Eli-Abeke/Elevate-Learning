@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link';
 
 export default function index() {
-    const supabaseUrl = 'https://vkggcpskdomclusmolfm.supabase.co'
+    const supabaseUrl = process.env.SUPABASE_URL
     const supabaseKey = process.env.SUPABASE_KEY
     const supabase = createClient(supabaseUrl, supabaseKey)
 
@@ -12,7 +12,7 @@ export default function index() {
     const router = useRouter()
     const { level } = router.query
 
-
+    // generic get function for an object with children that will also need to be collected.
     async function GetParent (){
         try {
             let { data, error } = await supabase
@@ -25,6 +25,8 @@ export default function index() {
           }
     }
 
+
+    // if there are any results, map them to some basic linked text items
     if(Items){
       return (
         <div className='m-5'>
@@ -42,7 +44,10 @@ export default function index() {
       )
     }
     else{
-        GetParent()
+      // get response on first page load, then wait until next load this is done because the react dom 
+      // will call the function repeatedly ,as updating a state reloads the page, but reloading the page,
+      // would call the function
+      GetParent()
       return <div>Loading</div>
     }
 }

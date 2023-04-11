@@ -4,7 +4,7 @@ export default function Parentchild(props) {
     const parent = props.parent
     const table = props.table
 
-    const supabaseUrl = 'https://vkggcpskdomclusmolfm.supabase.co'
+    const supabaseUrl = process.env.SUPABASE_URL
     const supabaseKey = process.env.SUPABASE_KEY
     const supabase = createClient(supabaseUrl, supabaseKey)
 

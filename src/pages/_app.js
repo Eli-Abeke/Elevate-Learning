@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }) {
   const [data, setData] = useState(null)
 
   let router = useRouter()
-  const supabaseUrl = 'https://vkggcpskdomclusmolfm.supabase.co'
+  const supabaseUrl = process.env.SUPABASE_URL
   const supabaseKey = process.env.SUPABASE_KEY
   const supabase = createClient(supabaseUrl, supabaseKey)
   

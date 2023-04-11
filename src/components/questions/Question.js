@@ -11,7 +11,7 @@ export default function QuestionsDisplay(props) {
 
 
     async function GetAnswer(questionid){
-        const supabaseUrl = 'https://vkggcpskdomclusmolfm.supabase.co'
+        const supabaseUrl = process.env.SUPABASE_URL
         const supabaseKey = process.env.SUPABASE_KEY
         const supabase = createClient(supabaseUrl, supabaseKey)
     }

@@ -11,7 +11,7 @@ export default function index() {
   const [Data, setData] = useState(null);
   const [Current, setCurrent] = useState(null);
 
-  const supabaseUrl = 'https://vkggcpskdomclusmolfm.supabase.co'
+  const supabaseUrl = process.env.SUPABASE_URL
   const supabaseKey = process.env.SUPABASE_KEY
   const supabase = createClient(supabaseUrl, supabaseKey)
   

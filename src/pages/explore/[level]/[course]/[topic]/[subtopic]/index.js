@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link';
 
 export default function index() {
-    const supabaseUrl = 'https://vkggcpskdomclusmolfm.supabase.co'
+    const supabaseUrl = process.env.SUPABASE_URL
     const supabaseKey = process.env.SUPABASE_KEY
     const supabase = createClient(supabaseUrl, supabaseKey)
 
