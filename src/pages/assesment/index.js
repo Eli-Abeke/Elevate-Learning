@@ -25,7 +25,8 @@ export default function index() {
     study_level: "A-Level"//
   }}
 
-
+  const supabaseUrl = "http://localhost:8000/functions/assesment_management"
+  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0"
 
     const [isLoading, setLoading] = useState(true);
   
@@ -50,11 +51,12 @@ export default function index() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        router.push(('assessment/'+data.assesment))
+        if (data){
+        router.push(('assesment/'+data.assesment))}
       })
       .catch((error) => {
         console.error("Error:", error);
-        router.push(('assessment/'+data.assesment))
+        router.push(('assesment/'+data.assesment))
       });
   }
 }

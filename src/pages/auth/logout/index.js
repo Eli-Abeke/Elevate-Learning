@@ -14,7 +14,7 @@ export default function index() {
   //log user out using their session cookie for identification
   async function handleLogout() {
     let { error } = await supabase.auth.signOut()
-    router.push("/auth/login")
+    router.push("/")
   }
 
   handleLogout()

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { UserContext } from '../../../_app'
+import { UserContext } from '../_app'
 import { createClient } from '@supabase/supabase-js';
 import ItemLarge from '@/components/dashboard/itemlarge';
 
@@ -23,7 +23,8 @@ export default function index() {
       .select("*, user, Assesment!inner(*, QuestionConnector!inner(*,Question!inner(*, SeenBy!inner(*)))))",{ count: 'exact'})
       .eq('user', User)
       .eq('Assesment.QuestionConnector.Question.SeenBy.user', User)
-      .range((pageLength*page), (pageLength*(page+1)))
+      .range((pageLength*page), -1)
+      .limit(pageLength)
       console.log(data)
       setData(data)
     } catch (error) {
@@ -55,7 +56,7 @@ export default function index() {
       <button onClick={() => setCurrent(index)} className='w-max text-2xl mt-5 mb-2'>{item.Assesment.QuestionConnector[0].Question.subtopicSummary}</button>
         <div key={index} className='absolute right-[-50vw] w-[40vw] h-[40vw]'>
         </div>
-        <div className='grid h-[5px] w-full gap-5 grid-flow-col-dense grid-cols-5'>
+        <div className='grid h-[5px] w-full gap-1 grid-flow-col-dense grid-cols-10'>
         {item.Assesment.QuestionConnector.map((subitem, index) => (
           <div className={`min-h-full min-w-full rounded-sm ${!(subitem.Question.SeenBy[0].previous_answer) ? "bg-red-500" : "bg-green-600"}`}>
             <div className={`banner ${(subitem.Question.SeenBy[0].completed) ? "bg-amber-600" : ""}`}>
@@ -65,6 +66,11 @@ export default function index() {
         ))}
         </div></>
       ))}
+        <div className='mx-auto '>
+          <button className='text-5xl text-center' onClick={() => (setPage(Page-1), GetAssessment(Page))}> - </button>
+          <p>page {Page + 1}</p>
+          <button className='text-5xl text-center' onClick={() => (setPage(Page+1), GetAssessment(Page))}> + </button>
+        </div>
       </div>
 
       <div className='col-span-3 w-full min-h-[100%] bg-Card/40 p-10  max-w-[96%] overflow-x-hidden overflow-y-scroll'>
@@ -85,9 +91,6 @@ export default function index() {
         </>
       ))}
       </div>
-      <div className='mx-auto '>
-      <button className='text-5xl text-center' onClick={() => (setPage(Page-1), GetAssessment(Page))}>-</button>
-      <button className='text-5xl text-center' onClick={() => (setPage(Page+1), GetAssessment(Page))}>+</button>
-    </div></div>
+</div>
   )}
 }

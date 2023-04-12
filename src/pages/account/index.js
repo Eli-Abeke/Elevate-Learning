@@ -16,7 +16,7 @@ export default function index() {
       <p className=' text-5xl'>Account</p>
       </div>
       </div>
-        <Link href={("/account/"+User+"/history")}>
+        <Link href={("/history")}>
           <p className='text-2xl pl-[5rem] p-[2rem] ml-[2rem] m-[1rem] bg-Card shadow-sm hover:shadow-xl hover:scale-[1.004]'>view history</p>
         </Link>
       </div>

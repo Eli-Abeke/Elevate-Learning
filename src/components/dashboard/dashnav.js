@@ -22,19 +22,19 @@ export default function Dashnav() {
         </div>
 
         <div className="group space-y-4 mt-10 ">
-          <div className={ (router.pathname == "/" )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
-            <Link href="/">
+          <div className={ (router.pathname.includes("account") )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
+            <Link href="/account">
               <div className="flex space-x-4">
                 <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">person</span>
                 <p className="my-auto hidden lg:block">Account</p>
               </div> 
             </Link>
           </div>
-          <div className={ (router.pathname == "/" )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
-            <Link href="/">
+          <div className={ (router.pathname.includes("/history") )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
+            <Link href="/history">
               <div className="flex space-x-4">
                 <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">insights</span>
-                <p className="my-auto hidden lg:block">Insights</p>
+                <p className="my-auto hidden lg:block">history</p>
               </div>
             </Link>
           </div>
@@ -46,11 +46,11 @@ export default function Dashnav() {
               </div>
             </Link>
           </div>
-          <div className={ (router.pathname == "/" )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
+          <div className={ (router.pathname.includes("explore") )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
             <Link href="/">
               <div className="flex space-x-4">
-                <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">search</span>
-                <p className="my-auto hidden lg:block">Search</p>
+                <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">Explore</span>
+                <p className="my-auto hidden lg:block">explore</p>
               </div>
             </Link>
           </div>
@@ -72,24 +72,18 @@ export default function Dashnav() {
           </div>
         </div>
       
-
+      {/*this section defines the lower half of the naviagtion bar, set to sit on the bottom of the page*/}
       <div className=" absolute bottom-0 w-full left-0 ">
-      <div className='space-y-4 mt-10 w-full'>
-        <Link href="/">
-          <div className="flex space-x-4">
-            <span className=" text-4xl mx-auto lg:mx-0 material-symbols-outlined">settings</span>
-            <p className="my-auto hidden lg:block">Settings</p>
-          </div>
-        </Link></div>
-        <div>
+        <div className='space-y-4 mt-10 w-full'>
           <Link href="/">
-          <div className="flex space-x-4">
-            <span className=" text-4xl mx-auto lg:mx-0 material-symbols-outlined">contact_support</span>
-            <p className="my-auto hidden lg:block">Contact support</p>
-          </div>
+            <div className="flex space-x-4">
+              <span className=" text-4xl mx-auto lg:mx-0 material-symbols-outlined">settings</span>
+              <p className="my-auto hidden lg:block">Settings</p>
+            </div>
           </Link>
         </div>
-        <div><Link href="/">
+
+        <div><Link href="/auth/logout">
           <div className="flex space-x-4">
             <span className=" text-4xl mx-auto lg:mx-0 material-symbols-outlined">logout</span>
             <p className="my-auto hidden lg:block">Sign out</p>
