@@ -29,7 +29,7 @@ export default function index() {
     try {
       let { data, error } = await supabase
         .from('SubtopicConnector')
-        .select('summary, slug, subtopic, Subtopic!inner(name, description))')
+        .select('summary, slug, subtopic, Subtopic!inner(*))')
         .eq('slug', subtopic)
         .range(0, 1)
       setItems(data)
@@ -53,7 +53,16 @@ export default function index() {
                 <p>{parentItem.topic}</p>
               </Link>
               <div className='flex space-x-brandgap'>
-                <p>{parentItem.Subtopic.description}</p>
+                <p>{parentItem.Subtopic.description.copy.map((item)=>
+  
+                (
+                  <div>
+                    <p>{item.text}</p>
+                    <p className=' ml-5 my-3 '>{item.bullet}</p>
+                  </div>
+                )
+                
+                )}</p>
 
               </div>
             </div>

@@ -34,19 +34,24 @@ export default function index() {
             <div>
               <script>{parentItem.CourseConnector.length = 12}</script>
               <Link href={"/explore/" + parentItem.slug}>
-                <p>{parentItem.name}</p>
+                <p className='opacity-40 pb-3 font-light'>{parentItem.name}</p>
               </Link>
               <div className='flex space-x-brandgap'>
                 {parentItem.CourseConnector.map((childItem) =>
                   <Link href={"/explore/" + parentItem.slug + "/" + childItem.slug}>
-                    <div className='bg-CardBright p-8 w-[15rem]'>
+                    <div className='bg-CardBright py-8 w-[13rem]'>
                       <p className='text-center'>{childItem.course}</p>
                     </div>
                   </Link>
                 )}
                 <Link href={"/explore/" + parentItem.slug}>
-                  <div className='bg-CardBright p-8 w-[15rem]'>
-                    <p className='text-center'>See More</p>
+                  <div className='border-white -inset-3 border-2 py-[calc(2rem-4px)] w-[7rem]'>
+                    <div className='mx-auto w-min'>
+                      <svg width="23" height="23" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 2L18 18.5L2 35" stroke="white" stroke-width="3" />
+                        <path d="M18 2L34 18.5L18 35" stroke="white" stroke-width="3" />
+                      </svg>
+                    </div>
                   </div>
                 </Link>
               </div>

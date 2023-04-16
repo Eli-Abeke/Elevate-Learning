@@ -18,7 +18,7 @@ export default function index() {
     try {
       let { data, error } = await supabase
         .from('CourseConnector')
-        .select('course, slug, TopicConnector!inner(*))')
+        .select('course, slug, TopicConnector!inner(*, SubtopicConnector!inner(subtopic)))')
         .eq('slug', course)
       setItems(data)
     } catch (error) {
@@ -37,17 +37,52 @@ export default function index() {
           {Items.map((parentItem, index) => (
             <div>
               <script>{parentItem.TopicConnector.length = 12}</script>
-              <div className='flex space-x-brandgap'>
+              <div className='w-full'>
+
                 {parentItem.TopicConnector.map((childItem) =>
-                  <Link href={"/explore/" + level + "/" + "/" + parentItem.slug + "/" + childItem.slug}>
-                    <div className='bg-CardBright p-8 w-[15rem]'>
-                      <p className='text-center'>{childItem.topic}</p>
+                  <div className='mt-brandgap'>
+
+                    <p className='opacity-40 font-light'>{childItem.topic}</p>
+
+
+
+                    <div className='flex'>
+                      <script>
+                        {childItem.SubtopicConnector.length = 3}
+                      </script>
+                      {childItem.SubtopicConnector.map((item) => (
+                        <div>
+                          <div className='flex mr-brandgap'>
+
+                            <Link href={"/explore/" + level + "/" + course + "/" + item.slug + "/" + childItem.slug}>
+                              <div className='bg-CardBright p-8 w-[15rem]'>
+                                <p className='text-center'>{item.subtopic}</p>
+                              </div>
+                            </Link>
+
+                          </div>
+
+                        </div>
+                      ))}
+                      <Link href={"/explore/" + level + "/" + "/" + parentItem.slug + "/" + childItem.slug}>
+                        <div className='border-white -inset-3 border-2 py-[calc(2rem-4px)] w-[7rem] min-h-full'>
+                          <div className='mx-auto w-min'>
+                            <svg width="23" height="23" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M2 2L18 18.5L2 35" stroke="white" stroke-width="3"/>
+                              <path d="M18 2L34 18.5L18 35" stroke="white" stroke-width="3" />
+                            </svg>
+                          </div>
+                        </div>
+                      </Link>
                     </div>
-                  </Link>
+                  </div>
                 )}
 
               </div>
             </div>
+
+
+
           ))}
         </div></>
     )
