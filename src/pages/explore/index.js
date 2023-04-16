@@ -21,7 +21,7 @@ export default function index() {
       console.error(error);
     }
   }
-  GetParent()
+
   if (Items) {
     return (
       <>
@@ -57,6 +57,7 @@ export default function index() {
     )
   }
   else {
+    GetParent()
     return <div></div>
   }
 }

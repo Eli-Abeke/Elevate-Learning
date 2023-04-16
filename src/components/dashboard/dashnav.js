@@ -47,7 +47,7 @@ export default function Dashnav() {
             </Link>
           </div>
           <div className={ (router.pathname.includes("explore") )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
-            <Link href="/">
+            <Link href="/explore">
               <div className="flex space-x-4">
                 <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">Explore</span>
                 <p className="my-auto hidden lg:block">explore</p>
