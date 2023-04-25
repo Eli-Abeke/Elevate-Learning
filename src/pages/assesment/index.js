@@ -36,7 +36,11 @@ export default function index() {
       //get the user cookie to allow the function to act as that user, reauthenticate them, gain their authentication
       //role, and connect assesment to them for them to access etc.
       var apikey = localStorage.getItem("sb-vkggcpskdomclusmolfm-auth-token");
+
+      //parse the api key object into a string
       apikey = JSON.parse(apikey)
+
+      //call the api
       fetch(supabaseUrl, {
         method: "POST", // or 'PUT'
         credentials: "same-origin",
@@ -50,7 +54,9 @@ export default function index() {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Success:", data);
+
+          // if the data is returned and set to be true, redirect the to a page containg the asessment id to be used as
+          // the variable for fetching the assesment 
           if (data) {
             router.push(('assesment/' + data.assesment))
           }
@@ -71,7 +77,7 @@ export default function index() {
     return (
       <div className=" absolute left-[50%] top-[50%] ">
         <p className='w-max text-center text-2xl font-light mx-auto'>Building assessment</p>
-        <div className='w-max mx-auto '><JellyTriangle color='white' size={160} speed={2} />
+        <div className='w-max mx-auto '><JellyTriangle color='#2F2F2F21ss' size={160} speed={2} />
         </div>
       </div>
     )

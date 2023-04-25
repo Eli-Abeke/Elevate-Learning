@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }) {
       .then((res) => res)
       .then((res) => {
         if (res.data.user){
-          setUser(res.data.user.id)
+          setUser(res.data.user)
           setTimeout(()=>{ setLoading(false) }, 200)
         }
         else{

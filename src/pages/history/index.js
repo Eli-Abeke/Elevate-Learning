@@ -5,7 +5,7 @@ import ItemLarge from '@/components/dashboard/itemlarge';
 
 export default function index() {
 
-  const User = useContext(UserContext)
+  const UserID = useContext(UserContext).id
 
   const [Page, setPage] = useState(0);
   const [Data, setData] = useState(null);
@@ -21,8 +21,8 @@ export default function index() {
       const { data, error } = await supabase
         .from("UserAssesmentStats")
         .select("*, user, Assesment!inner(*, QuestionConnector!inner(*,Question!inner(*, SeenBy!inner(*)))))", { count: 'exact' })
-        .eq('user', User)
-        .eq('Assesment.QuestionConnector.Question.SeenBy.user', User)
+        .eq('user', UserID)
+        .eq('Assesment.QuestionConnector.Question.SeenBy.user', UserID)
         .range((pageLength * page), -1)
         .limit(pageLength)
       console.log(data)
@@ -37,7 +37,7 @@ export default function index() {
       const { data, error } = await supabase
         .from("UserAssesmentStats")
         .select("*", { count: 'exact' })
-        .eq('user', User)
+        .eq('user', UserID)
     } catch (error) {
       console.error(error);
     }
@@ -53,23 +53,22 @@ export default function index() {
 
         <div className='col-span-4 grid-flow-row '>
           {Data.map((item, index) => (
-            <>
-              <button onClick={() => setCurrent(index)} className='w-max text-2xl mt-5 mb-2'>{item.Assesment.QuestionConnector[0].Question.subtopicSummary}</button>
-              <div key={index} className='absolute right-[-50vw] w-[40vw] h-[40vw]'>
-              </div>
+            <div className='bg-Card my-3 p-3'>
+              <button onClick={() => setCurrent(index)} className='w-max text-xl '>{item.Assesment.QuestionConnector[0].Question.subtopicSummary}</button>
+
               <div className='grid h-[5px] w-full gap-1 grid-flow-col-dense grid-cols-10'>
-                {item.Assesment.QuestionConnector.map((subitem, index) => (
+                {/*item.Assesment.QuestionConnector.map((subitem, index) => (
                   <div className={`min-h-full min-w-full rounded-sm ${!(subitem.Question.SeenBy[0].previous_answer) ? "bg-red-500" : "bg-green-600"}`}>
                     <div className={`banner ${(subitem.Question.SeenBy[0].completed) ? "bg-amber-600" : ""}`}>
                       {subitem.Question.SeenBy[0].previous_answer}
                     </div>
                   </div>
-                ))}
-              </div></>
+                ))*/}
+              </div></div>
           ))}
-          <div className='mx-auto '>
+          <div className='mx-auto flex space-x-5'>
             <button className='text-5xl text-center' onClick={() => (setPage(Page - 1), GetAssessment(Page))}> - </button>
-            <p>page {Page + 1}</p>
+            <p className='my-auto'>page {Page + 1}</p>
             <button className='text-5xl text-center' onClick={() => (setPage(Page + 1), GetAssessment(Page))}> + </button>
           </div>
         </div>

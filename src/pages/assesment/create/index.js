@@ -41,12 +41,15 @@ export default function index() {
             })
               .then((response) => response.json())
               .then((data) => {
-                console.log("Success:", data);
-                if (data.assesment) {
+                // if an assesment ID is returned, redirect the user to a page where the assesment id is a variable in the URL
+                // this ID will be used to fetch all the questions in the assesment
+                if (data.assesment){
                   router.push(('/assesment/' + data.assesment))
                 }
               })
               .catch((error) => {
+                // if there is an error, console log the error, but do not redirect the user. as doing so will not render an
+                // assesment and present an error. might redirect the user back to the previous page, and present an error.
                 console.error("Error:", error);
               });
           }
@@ -60,6 +63,7 @@ export default function index() {
 
         <div>
           <p>
+            {/* testing to ensure that the paramenters are passed from the last page to this one */}
             {JSON.stringify(parameters)}
           </p>
         </div>
