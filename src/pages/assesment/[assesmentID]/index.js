@@ -26,14 +26,11 @@ export default  function index() {
         Questions = Questions.map((FullObject) => FullObject.Question)
         setQuestions(Questions)
         setLoadings(false)
-        
       } catch (error) {
         console.error(error);
       }
     }
     
-    
-
   
   const router = useRouter()
   

@@ -9,12 +9,32 @@ export default function QuestionsDisplay(props) {
     var questions = props.question
     var index = props.index
 
-
-    async function GetAnswer(questionid){
         const supabaseUrl = process.env.SUPABASE_URL
         const supabaseKey = process.env.SUPABASE_KEY
         const supabase = createClient(supabaseUrl, supabaseKey)
+    async function GetAnswer(questionid){
+
     }
+
+    async function CheckAnswer(question, answer) {
+        const supabase = createClient(supabaseUrl, supabaseKey)
+        try {
+          let { data, error } = await supabase
+          .from('Question')
+          .select('id, answer')
+          .eq('id', question)
+          .eq('answer',answer )
+          .single()
+          if (data.Question.answer){
+            return true
+          }
+          else {
+           return false   
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
     
     var cur = String(router.asPath)
 
@@ -33,8 +53,8 @@ export default function QuestionsDisplay(props) {
             <div className='col-span-4 pl-8'>
                 <p className='text-2xl'>{question.question}</p>
                 <div>
-                    <form className='grid grid-cols-1'>
-                        <input type='text' className='bg-transparent border-b-[0.5px] h-[2.5rem] border-white'></input>
+                    <form className='grid grid-cols-1' onSubmit={() => CheckAnswer(question.id, document.getElementById(("answer"+index+1)).value)}>
+                        <input type='text' id={'answer'+index+1} className='bg-transparent border-b-[0.5px] h-[2.5rem] border-white'></input>
                         <input type='submit' value={"Submit"} className='p-4 px-24 mx-auto my-10 border-2 w-min border-white rounded-sm'></input>
                     </form>
                 </div>

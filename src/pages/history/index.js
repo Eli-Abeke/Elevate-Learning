@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { UserContext } from '../_app'
 import { createClient } from '@supabase/supabase-js';
 import ItemLarge from '@/components/dashboard/itemlarge';
+import Link from 'next/link';
 
 export default function index() {
 
@@ -10,6 +11,7 @@ export default function index() {
   const [Page, setPage] = useState(0);
   const [Data, setData] = useState(null);
   const [Current, setCurrent] = useState(null);
+  const [CurrentID, setCurrentID] = useState(null)
 
   const supabaseUrl = process.env.SUPABASE_URL
   const supabaseKey = process.env.SUPABASE_KEY
@@ -54,7 +56,7 @@ export default function index() {
         <div className='col-span-4 grid-flow-row '>
           {Data.map((item, index) => (
             <div className='bg-Card my-3 p-3'>
-              <button onClick={() => setCurrent(index)} className='w-max text-xl '>{item.Assesment.QuestionConnector[0].Question.subtopicSummary}</button>
+              <button onClick={() => (setCurrent(index), setCurrentID(item.Assesment.id))} className='w-max text-xl '>{item.Assesment.QuestionConnector[0].Question.subtopicSummary}</button>
 
               <div className='grid h-[5px] w-full gap-1 grid-flow-col-dense grid-cols-10'>
                 {/*item.Assesment.QuestionConnector.map((subitem, index) => (
@@ -83,10 +85,19 @@ export default function index() {
                 </script>
                 {item.Assesment.QuestionConnector.map((subitem, index) => (
                   <div key={index} className={` grid grid-cols-7 ${(Current == item.parentindex) ? "top-0 left-[0vw] my-4 block transition-all duration-500 opacity-100" : "h-0 duration-1000 opacity-0 top-0 left-[50vw] transition-all translate-x-[50vw]"}`}>
+                    <script>
+                      {subitem.Question.question = ((subitem.Question.question.replace("Calculate","").replace("What is","")).slice(0,35) + "...")}
+                    </script>
                     <p className='col-span-1 text-2xl font-bold'>{index + 1}</p>
                     <p className=' text-md col-span-6'>{subitem.Question.question}</p>
                   </div>
+                  
                 ))}
+                
+              </div>
+
+              <div className={`  ${(CurrentID == item.Assesment.id) ? "top-0 left-[0vw] my-4 block transition-all duration-500 opacity-100" : "h-0 duration-1000 opacity-0 top-0 left-[50vw] transition-all translate-x-[50vw]"}`}>
+                <Link href={"/assesment/"+CurrentID}><p>Go To Assesment</p></Link>
               </div>
             </>
           ))}
