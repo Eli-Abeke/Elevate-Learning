@@ -22,27 +22,19 @@ export default function Dashnav() {
         </div>
 
         <div className="group space-y-4 mt-10 ">
-          <div className={ (router.pathname.includes("account") )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
-            <Link href="/account">
+        <div className={ (router.pathname == "/" )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
+            <Link href="/">
               <div className="flex space-x-4">
-                <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">person</span>
-                <p className="my-auto hidden lg:block">Account</p>
-              </div> 
+                <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">HOME</span>
+                <p className="my-auto hidden lg:block">Home</p>
+              </div>
             </Link>
           </div>
           <div className={ (router.pathname.includes("/history") )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
             <Link href="/history">
               <div className="flex space-x-4">
                 <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">insights</span>
-                <p className="my-auto hidden lg:block">history</p>
-              </div>
-            </Link>
-          </div>
-          <div className={ (router.pathname == "/" )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
-            <Link href="/">
-              <div className="flex space-x-4">
-                <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">favorite</span>
-                <p className="my-auto hidden lg:block">favourites</p>
+                <p className="my-auto hidden lg:block">History</p>
               </div>
             </Link>
           </div>
@@ -50,24 +42,16 @@ export default function Dashnav() {
             <Link href="/explore">
               <div className="flex space-x-4">
                 <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">Explore</span>
-                <p className="my-auto hidden lg:block">explore</p>
+                <p className="my-auto hidden lg:block">Explore</p>
               </div>
             </Link>
           </div>
-          <div className={ (router.pathname == "/" )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
-            <Link href="/">
+          <div className={ (router.pathname.includes("account") )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
+            <Link href="/account">
               <div className="flex space-x-4">
-                <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">book</span>
-                <p className="my-auto hidden lg:block">Bookmarks</p>
-              </div>
-            </Link>
-          </div>
-          <div className={ (router.pathname == "/" )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
-            <Link href="/">
-              <div className="flex space-x-4">
-                <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">quiz</span>
-                <p className="my-auto hidden lg:block">Questions</p>
-              </div>
+                <span className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">person</span>
+                <p className="my-auto hidden lg:block">Account</p>
+              </div> 
             </Link>
           </div>
         </div>

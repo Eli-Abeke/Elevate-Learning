@@ -52,7 +52,7 @@ export default  function index() {
       <p className=' text-5xl'>{LocalQuestions[0].SubtopicConnector.subtopic}</p>
       </div>
 
-      <QuestionsDisplay question={questions} index={index}/>
+      <QuestionsDisplay question={questions} index={index} assesmentID={assesmentID}/>
     </div>
   
 )}}
