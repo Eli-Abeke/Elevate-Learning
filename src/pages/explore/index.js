@@ -39,13 +39,13 @@ export default function index() {
               <div className='flex space-x-brandgap'>
                 {parentItem.CourseConnector.map((childItem) =>
                   <Link href={"/explore/" + parentItem.slug + "/" + childItem.slug}>
-                    <div className='bg-CardBright py-8 w-[13rem]'>
+                    <div className='bg-CardBright py-[5rem] w-[25rem]'>
                       <p className='text-center'>{childItem.course}</p>
                     </div>
                   </Link>
                 )}
                 <Link href={"/explore/" + parentItem.slug}>
-                  <div className='border-white -inset-3 border-2 py-[calc(2rem-4px)] w-[7rem]'>
+                  <div className='border-white -inset-3 border-2 py-[calc(5rem-4px)] w-[10rem]'>
                     <div className='mx-auto w-min'>
                       <svg width="23" height="23" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2 2L18 18.5L2 35" stroke="white" stroke-width="3" />

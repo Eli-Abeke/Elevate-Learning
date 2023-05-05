@@ -50,7 +50,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className='h-max'>
+      <div className='h-max p-brand'>
         
         <Welcome></Welcome>
         <div className="grid grid-cols-3 grid-rows-3 my-brandgap">

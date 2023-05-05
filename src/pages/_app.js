@@ -75,11 +75,11 @@ export default function App({ Component, pageProps }) {
   return (
     <>
     
-      <div className="grid grid-cols-7">
-        <div>
-        <Dashnav/>
+      <div className="grid grid-cols-12 gap-24">
+        <div className='col-span-1 w-full flex'>
+          <Dashnav/>
         </div>
-        <div className="col-span-6 ">
+        <div className="col-span-11 ">
           <UserContext.Provider value={User}>
           <Component {...pageProps} />
           </UserContext.Provider>

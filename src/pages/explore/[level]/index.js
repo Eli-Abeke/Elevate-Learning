@@ -46,21 +46,21 @@ export default function index() {
 
                 <div className='flex space-x-brandgap'>
                   <script>
-                    {parentItem.TopicConnector.length = 3}
+                    {parentItem.TopicConnector.length = 4}
                   </script>
 
                   {parentItem.TopicConnector.map((childItem, index) => (
-                    <div className='w-[13rem]'>
+                    <div className='py-[5rem] w-[25rem] bg-CardBright'>
                       <div className='w-full'>
                         <Link href={"/explore/" + level + "/" + parentItem.slug +"/"+childItem.slug}>
-                          <p className='bg-CardBright p-8 h-full text-center w-full'>{childItem.topic}</p>
+                          <p className=' text-center'>{childItem.topic}</p>
                         </Link>
                       </div>
                     </div>
                   ))}
 
                   <Link href={"/explore/" + level + "/" + parentItem.slug}>
-                    <div className='border-white  border-2 py-[calc(2rem-4px)] w-[7rem]'>
+                    <div className='border-white -inset-3 border-2 py-[calc(5rem-4px)] w-[10rem]'>
                       <div className='mx-auto w-min'>
                         <svg width="23" height="23" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M2 2L18 18.5L2 35" stroke="white" stroke-width="3" />
