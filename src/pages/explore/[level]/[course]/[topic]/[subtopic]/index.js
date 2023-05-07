@@ -12,6 +12,7 @@ export default function index() {
   const [Items, setItems] = useState(null);
   const router = useRouter()
   const { level, course, topic, subtopic } = router.query
+  const all = ["Explore", level, course, topic]
 
   //go through all parameters, remove hyphens and capitalise the letters at the star of any word.
   //that or use the result from validate to create proper query in route[create]
@@ -29,7 +30,7 @@ export default function index() {
     try {
       let { data, error } = await supabase
         .from('SubtopicConnector')
-        .select('summary, slug, subtopic, Subtopic!inner(*))')
+        .select('summary, slug, subtopic, Subtopic!inner(*), TopicConnector(*, CourseConnector(*)))')
         .eq('slug', subtopic)
         .range(0, 1)
       setItems(data)
@@ -42,7 +43,9 @@ export default function index() {
     return (
       <>
         <div className='bg-Card w-full p-[7rem] leading-none'>
-          <p className='text-white/20 uppercase'></p>
+        <p className='text-white/20 uppercase'>{
+            all.map((item)=>(<span>{item} &gt;</span>))
+          }</p>
           <p className=' text-9xl uppercase font-thin'>{Items[0].subtopic}</p>
         </div>
         <div className='m-5 mx-[7.5rem] text-2xl'>
@@ -69,7 +72,9 @@ export default function index() {
           ))}
           <Link href={{
             pathname: "/assesment/create",
-            query: parameters,
+            query: {
+              "topic":""
+            },
 
           }}>
             <p className='p-5'>Create some questions</p>

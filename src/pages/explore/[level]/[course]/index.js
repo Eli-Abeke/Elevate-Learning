@@ -12,6 +12,7 @@ export default function index() {
   const [Items, setItems] = useState(null);
   const router = useRouter()
   const { level, course } = router.query
+  const all = ["Explore", level]
 
 
   async function GetParent() {
@@ -30,7 +31,9 @@ export default function index() {
     return (
       <>
         <div className='bg-Card w-full p-[7rem] leading-none'>
-          <p className='text-white/20 uppercase'></p>
+          <p className='text-white/20 uppercase'>{
+            all.map((item)=>(<span>{item} &gt;</span>))
+          }</p>
           <p className=' text-9xl uppercase font-thin'>{Items[0].course}</p>
         </div>
         <div className='m-5'>

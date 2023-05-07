@@ -7,12 +7,12 @@ export default function index() {
   const supabaseUrl = process.env.SUPABASE_URL
   const supabaseKey = process.env.SUPABASE_KEY
   const supabase = createClient(supabaseUrl, supabaseKey)
-
+  
 
   const [Items, setItems] = useState(null);
   const router = useRouter()
   const { level, course, topic } = router.query
-
+  const all = ["Explore", level, course]
 
   async function GetParent() {
     try {
@@ -31,7 +31,9 @@ export default function index() {
     return (
       <>
         <div className='bg-Card w-full p-[7rem] leading-none'>
-          <p className='text-white/20 uppercase'></p>
+        <p className='text-white/20 uppercase'>{
+            all.map((item)=>(<span>{item} &gt;</span>))
+          }</p>
           <p className=' text-9xl uppercase font-thin'>{Items[0].topic}</p>
         </div>
         <div className='m-5'>

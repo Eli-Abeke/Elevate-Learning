@@ -11,6 +11,7 @@ export default function index() {
   const [Items, setItems] = useState(null);
   const router = useRouter()
   const { level } = router.query
+  const all = ["Explore"]
 
   // generic get function for an object with children that will also need to be collected.
   async function GetParent() {
@@ -31,7 +32,9 @@ export default function index() {
     return (
       <>
         <div className='bg-Card w-full p-[7rem] leading-none'>
-          <p className='text-white/20 uppercase'></p>
+          <p className='text-white/20 uppercase'>{
+            all.map((item)=>(<span>{item} &gt;</span>))
+          }</p>
           <p className=' text-9xl uppercase font-thin'>{Items[0].StudyLevel.name}</p>
         </div>
         <div className='m-5 gap-brandgap'>
