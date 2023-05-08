@@ -48,28 +48,50 @@ export default function index() {
           }</p>
           <p className=' text-9xl uppercase font-thin'>{Items[0].subtopic}</p>
         </div>
-        <div className='m-5 mx-[7.5rem] text-2xl'>
+        <div className='m-5 mx-[7.5rem] text-xl max-w-[75%]'>
           {Items.map((parentItem, index) => (
             <div>
               <script>{parentItem.Subtopic.length = 12}</script>
               <Link href={"/explore/" + level + "/" + course + "/" + parentItem.slug}>
                 <p>{parentItem.topic}</p>
               </Link>
-              <div className='flex space-x-brandgap'>
+              <div className='flex space-x-brandgap '>
                 <p>{parentItem.Subtopic.description.copy.map((item)=>
   
                 (
+                  
                   <div>
-                    <p>{item.text}</p>
-                    <p className=' ml-5 my-3 '>{item.bullet}</p>
+                    <p className={`my-9 ${item.text ? '':'hidden'}`}>{item.text}</p>
+                    <li className={`ml-10 ${item.bullet ? '':'hidden'}`}>{item.bullet}</li>
                   </div>
                 )
                 
                 )}</p>
+                
+                  
+                  
 
               </div>
+              <div className=' space-y-5' id='faq'>
+                <h2 className='text-3xl'>FAQ</h2>
+                {parentItem.Subtopic.faq.map((item)=>(
+                  <div className='bg-Card p-8'>
+                    <p>{item.question}</p>
+                  </div>
+                ))}
+              </div>
+
+                        
+        <div className='my-10'>
+          <form id='thisform' onSubmit={() => (true)} className=''>
+            <textarea form='thisform' className='w-full h-[15rem] p-5 resize-none bg-transparent border-[2px] rounded-md border-CardBright' placeholder='Ask Ai'></textarea>
+            <input type='submit' value={"submit"}></input>
+          </form>
+        </div>
             </div>
           ))}
+
+
           <Link href={{
             pathname: "/assesment/create",
             query: {
@@ -77,9 +99,14 @@ export default function index() {
             },
 
           }}>
-            <p className='p-5'>Create some questions</p>
+            <p className='p-5 my-5 bg-CardBright'>Create some questions</p>
           </Link>
+
+
+
+
         </div>
+
       </>
     )
   }
