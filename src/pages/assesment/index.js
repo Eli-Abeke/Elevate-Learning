@@ -26,6 +26,7 @@ export default function index() {
     }
   }
 
+
   const supabaseUrl = "https://vkggcpskdomclusmolfm.functions.supabase.co/assesment_management"
   const supabaseKey = process.env.SUPABASE_KEY
 

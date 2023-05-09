@@ -53,7 +53,7 @@ export default function QuestionsDisplay(props) {
             <div className='col-span-4 pl-8'>
                 <p className='text-2xl'>{question.question}</p>
                 <div>
-                    <form className='grid grid-cols-1' onSubmit={() => (question.done = CheckAnswer(question.id, document.getElementById(("answer"+index+1)).value))}>
+                    <form action='#' className='grid grid-cols-1' onSubmit={() => (question.done = CheckAnswer(question.id, document.getElementById(("answer"+index+1)).value))}>
                         <input type='text' id={'answer'+index+1} className={`bg-transparent border-b-[0.5px] h-[2.5rem] ${question.done ? 'border-green-600':'border-white'}`}></input>
                         <input type='submit' value={"Submit"} className={`p-4 px-24 mx-auto my-10 border-2 w-min rounded-sm ${question.done ? 'border-green-600':'border-white'}`}></input>
                     </form>

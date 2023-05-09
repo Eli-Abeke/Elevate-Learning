@@ -75,17 +75,17 @@ export default function index() {
               <div className=' space-y-5' id='faq'>
                 <h2 className='text-3xl'>FAQ</h2>
                 {parentItem.Subtopic.faq.map((item)=>(
-                  <div className='bg-Card p-8'>
+                  <div className='bg-Card p-5 rounded'>
                     <p>{item.question}</p>
                   </div>
                 ))}
               </div>
 
                         
-        <div className='my-10'>
+        <div className='my-10 border-[2px] rounded-md border-CardBright'>
           <form id='thisform' onSubmit={() => (true)} className=''>
-            <textarea form='thisform' className='w-full h-[15rem] p-5 resize-none bg-transparent border-[2px] rounded-md border-CardBright' placeholder='Ask Ai'></textarea>
-            <input type='submit' value={"submit"}></input>
+            <textarea form='thisform' className='w-full h-[15rem]  resize-none bg-transparent  p-5' placeholder='Ask Ai'></textarea>
+            <input type='submit' value={"submit"} className='w-full h-full cursor-pointer bg-CardBright p-5'></input>
           </form>
         </div>
             </div>
@@ -93,9 +93,18 @@ export default function index() {
 
 
           <Link href={{
-            pathname: "/assesment/create",
+            pathname: "/assesment",
             query: {
-              "topic":""
+              "subtopic": Items[0].subtopic,
+              "subtopic_summary":Items[0].summary,
+              "topic":Items[0].TopicConnector.topic,
+              "topic_summary":Items[0].TopicConnector.summary,
+              "course":Items[0].TopicConnector.CourseConnector.course,
+              "course_summary":Items[0].TopicConnector.CourseConnector.summary,
+              "study_level":Items[0].TopicConnector.CourseConnector.study_level,
+              "syllabus":Items[0].TopicConnector.CourseConnector.syllabus,
+              "lengthOf":12,
+              "difficulty":"easy"
             },
 
           }}>
