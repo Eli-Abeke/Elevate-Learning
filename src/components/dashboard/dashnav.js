@@ -20,7 +20,7 @@ export default function Dashnav() {
 
         <div className="group space-y-4 mt-10 w-min mx-auto">
         <div className={(router.pathname == "/" )? "duration-700 transition-all " : "opacity-40 transition-all brightness-50 duration-300"}>
-            <Link href="/">
+            <Link href="/home">
               
                 <p className="text-4xl lg:mx-0 mx-auto material-symbols-outlined">HOME</p>
 
