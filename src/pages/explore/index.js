@@ -25,11 +25,11 @@ export default function index() {
   if (Items) {
     return (
       <>
-        <div className='bg-Card w-full p-[7rem] leading-none'>
+        <div className='border-b-[1px] mx-[2.5%] w-[95%] p-[7rem] leading-none'>
           <p className='text-white/20 uppercase'></p>
           <p className=' text-9xl uppercase font-thin'>explore</p>
         </div>
-        <div className='m-5'>
+        <div className='mx-[calc(2.5%+7rem)] my-5'>
           {Items.map((parentItem, index) => (
             <div>
               <script>{parentItem.CourseConnector.length = 12}</script>

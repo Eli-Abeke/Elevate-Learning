@@ -52,13 +52,6 @@ export default function Home() {
       </Head>
       <div className='h-max p-brand'>
         
-        <Welcome></Welcome>
-        <div className="grid grid-cols-3 grid-rows-3 my-brandgap">
-          <div className='col-span-2'>
-            <p>Hello</p>
-          </div>
-
-        </div>
       </div>
     </>
   )

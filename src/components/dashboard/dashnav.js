@@ -13,7 +13,7 @@ export default function Dashnav() {
   const router = useRouter();
 
   return (
-    <div className="col-span-1 max-w-[calc((1.05/12)*100vw)] w-full fixed top-0  p-[2vw] h-[100vh] border-r-[0.5px] border-white/5 text-xl bg-CardBright drop-shadow-sm ">
+    <div className="col-span-1 max-w-[calc((1.05/12)*100vw)] w-full fixed top-0  h-[90vh] border-r-[0.5px] border-white my-[5vh] text-xl drop-shadow-sm ">
       <div className="relative top-0 left-0 w-full h-[100%]">
         <div className="relative top-0 left-0">
         </div>

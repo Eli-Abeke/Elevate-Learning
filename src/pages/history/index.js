@@ -52,7 +52,7 @@ export default function index() {
 
     return (
       <>
-              <div className='bg-Card w-full p-[7rem] leading-none'>
+              <div className=' w-full p-[7rem] leading-none'>
           <p className='text-white/20 uppercase'></p>
           <p className=' text-9xl uppercase font-thin'>history</p>
         </div>

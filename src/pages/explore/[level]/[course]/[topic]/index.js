@@ -30,7 +30,7 @@ export default function index() {
   if (Items) {
     return (
       <>
-        <div className='bg-Card w-full p-[7rem] leading-none'>
+        <div className='border-b-[1px] mx-[2.5%] w-[95%] p-[7rem] leading-none'>
         <p className='text-white/20 uppercase'>{
             all.map((item)=>(<span>{item} &gt;</span>))
           }</p>
